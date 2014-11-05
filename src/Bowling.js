@@ -9,15 +9,32 @@ function bowlingScoring(arr){
 		sum += frame[0];
 
 		if (frame[0] == 10){
-			sum += arr[i+1][0];
-			if (arr[i+1][1]) {
-				sum += arr[i+1][1];
+			if (i != 9){
+				if (i != 8) {
+					sum += arr[i+1][0];
+					if ((arr[i+1][0] != 10)) {
+						sum += arr[i+1][1];
+					} else {
+						sum += arr[i+2][0];
+					}
+				} else {
+					sum+= arr[i+1][0] + arr[i+1][1];
+				}
 			} else {
-				sum += arr[i+2][0];
-			};	
+				sum += frame[1] + frame[2];
+			}
 		} else {
 			sum += frame[1];
+			if(frame[0]+frame[1] == 10) {
+				if (i != 9){
+					sum += arr[i+1][0];
+				} else {
+					sum += arr[i][2];
+				}
+			}
 		};
+
+
 
 	};
 
